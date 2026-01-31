@@ -1,16 +1,37 @@
-# React + Vite
+UserFetch 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beginner-friendly React project that demonstrates **API fetching using `useEffect`**, along with proper handling of **loading**, **error**, and **data states**.
 
-Currently, two official plugins are available:
+This project focuses on understanding how React interacts with external APIs and how side effects are managed correctly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Features
+- Fetches user data from the GitHub API
+- Displays loading state while fetching data
+- Handles API errors gracefully
+- Renders user information (name, avatar, bio)
+- Clean and readable UI
+- Built using only React fundamentals
 
-## React Compiler
+🧠 Concepts Covered
+`useState`
+`useEffect`
+API fetching in React
+Loading and error handling
+Conditional rendering
+Side effects vs render logic
+Clean component structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+🛠️ Tech Stack
+- React
+- JavaScript
+- Vite
+- GitHub REST API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## ▶️ How to Run Locally
+
+bash
+npm install
+npm run dev
