@@ -1,15 +1,22 @@
 import React,{useState,useEffect} from "react";
 function GithubUser(){
+    const[searchUser,setSearchUser]=useState("octocat")
     const[userName,setUserName]=useState("octocat");
     const [user,setUser]=useState(null);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState(null);
 
     useEffect(()=>{
-        if(!userName)return;
+
+        if(!searchUser)return;
+        const controller=new AbortController();
+        const signal=controller.signal;
         setLoading(true);
         setError(null);
-        fetch("https://api.github.com/users/${userName}")
+        console.log("Fetching user:", searchUser);
+        fetch(`https://jsonplaceholder.typicode.com/users/${searchUser}`, {
+  signal
+})
         .then((res)=>{
             if(!res.ok){
                 throw new Error("user not found")
@@ -21,11 +28,15 @@ function GithubUser(){
             setLoading(false);
         })
         .catch((err)=>{
+            if(err.name ==="AbortError")return;
             setError(err.message);
             setUser(null);
             setLoading(false);
         });
-    },[userName]);
+      return()=>{
+        controller.abort();
+      }
+    },[searchUser]);
     return (
     <div style={{ padding: "20px" }}>
       <h1>GitHub User</h1>
@@ -35,18 +46,27 @@ function GithubUser(){
         value={userName}
         onChange={(e)=>setUserName(e.target.value)}
         style={{padding:"8px",marginBottom:"10px"}}
-      
-      
       />
+      <button
+        onClick={()=>setSearchUser(userName)}
+        style={{marginLeft:"10px"}}
+      >
+        search
+      </button>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
-
+      {!loading && error &&(
+        <p style={{ color:"red"}}>
+          Error:{error}
+        </p>
+      )}
       {user && (
         <div>
           <h2>{user.name}</h2>
           <img src={user.avatar_url} alt="avatar" width="120" />
           <p>{user.bio}</p>
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Company:</strong> {user.company.name}</p>
         </div>
       )}
     </div>
