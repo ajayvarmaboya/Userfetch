@@ -1,10 +1,24 @@
 import React,{useState,useEffect} from "react";
 function GithubUser(){
-    const[searchUser,setSearchUser]=useState("octocat")
-    const[userName,setUserName]=useState("octocat");
+    const[searchUser,setSearchUser]=useState("")
+    const[userName,setUserName]=useState("");
     const [user,setUser]=useState(null);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState(null);
+    useEffect(()=>{
+      if(!userName){
+        setUser(null);
+        setError(null);
+      }
+    },[userName])
+    useEffect(()=>{
+      const timeout=setTimeout(()=>{
+        setSearchUser(userName);
+      },500);
+      return()=>{
+        clearTimeout(timeout);
+      }
+    },[userName]);
 
     useEffect(()=>{
 
@@ -47,12 +61,7 @@ function GithubUser(){
         onChange={(e)=>setUserName(e.target.value)}
         style={{padding:"8px",marginBottom:"10px"}}
       />
-      <button
-        onClick={()=>setSearchUser(userName)}
-        style={{marginLeft:"10px"}}
-      >
-        search
-      </button>
+      
 
       {!loading && error &&(
         <p style={{ color:"red"}}>
