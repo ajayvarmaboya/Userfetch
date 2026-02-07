@@ -1,23 +1,15 @@
 import React,{useState,useEffect} from "react";
 function GithubUser(){
   const[input,setInput]=useState("");
-  const[debouncedInput,setDebouncedInput]=useState("");
+  const[submmitedid,setSubmmitedId]=useState(null);
   const[user,setUser]=useState(null);
   const[loading,setLoading]=useState(false);
   const[error,setError]=useState(null);
 
-useEffect(()=>{
-  const timer=setTimeout(()=>{
-    setDebouncedInput(input);
-  },500);
-  return()=> clearTimeout(timer);
-},[input]);
 
 
 useEffect(()=>{
-  if(!debouncedInput){
-    setUser(null);
-    setError(null);
+  if(!submmitedid){
     return;
   }
   const controller=new AbortController();
@@ -25,7 +17,7 @@ useEffect(()=>{
 
   setLoading(true);
   setError(null);
-  fetch(`https://jsonplaceholder.typicode.com/users/${debouncedInput}`, {
+  fetch(`https://jsonplaceholder.typicode.com/users/${submmitedid}`, {
       signal,
     })
     .then((res)=>{
@@ -45,25 +37,52 @@ useEffect(()=>{
       setLoading(false);
     });
     return()=>controller.abort();
+},[submmitedid]);
 
+function handelSubmit(e){
+  e.preventDefault();
+  if(!input){
+    setError("user ID is required");
+    return;
+  }
+  const id=Number(input);
 
-},[debouncedInput]);
+  if(isNaN(id)||id<1||id>10){
+    setError("user id must be between 1 and 10");
+      return;
+    }
+    setError(null);
+    setSubmmitedId(id);
+}
 return(
   <div style={{padding:"20px"}}>
     <h1> User Fetch</h1>
   
 
-  <input 
+  <form onSubmit={handelSubmit}>
+    <input
     type="text"
-    placeholder="Enter the user is(1-10)"
+    placeholder="Enter user-id (1-10)"
     value={input}
-    onChange={(e)=>setInput(e.target.value)}
+    onChange={(e)=>{
+      const value=e.target.value;
+      setInput(value);
+      if(value===""){
+        setUser(null);
+        setError(null);
+        setSubmmitedId(null);
+      }
+    }}
     style={{padding:"8px",marginBottom:"10px"}}
     />
-    {loading &&<p>Loading...</p>}
-    {!loading && error &&(
-      <p style ={{color:"red"}}>Error:{error}</p>
-    )}
+    <button type="submit" disabled={!input||loading} style={{marginLeft:"10px"}}>
+      Search
+    </button>
+  </form>
+  {loading && <p>Loading...</p>}
+  {!loading && error &&(
+    <p style={{color:"red"}}>Error:{error}</p>
+  )}
     {user &&(
       <div>
         <p><strong>Name:</strong>{user.name}</p>
