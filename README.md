@@ -2,7 +2,7 @@
 
 A modern, interactive React application to search GitHub users in real time with smooth animations, debounced API calls, and a polished UI.
 
-👉 **Live Demo:** https://github-explorer.vercel.app  
+👉 **Live Demo:** https://ajayvarmaboya.github.io/Userfetch/
 👉 **Tech Stack:** React · Vite · GitHub API · CSS
 
 ---
@@ -55,7 +55,7 @@ A modern, interactive React application to search GitHub users in real time with
 - **Frontend:** React (Vite)
 - **Styling:** Vanilla CSS (no UI libraries)
 - **API:** GitHub REST API
-- **Deployment:** Vercel
+- **Deployment:** Github pages
 
 ---
 
@@ -64,5 +64,5 @@ A modern, interactive React application to search GitHub users in real time with
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/github-explorer.git
-cd github-explorer
+git clone https://github.com/ajayvarmaboya/Userfetch.git
+cd Userfetch
