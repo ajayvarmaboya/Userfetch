@@ -1,54 +1,68 @@
-# UserFetch 🔍
+# 🔍 GitHub UserFetch
 
-A beginner-friendly React project that demonstrates **API fetching using `useEffect`**, with proper handling of **loading**, **error**, and **user intent**.
+A modern, interactive React application to search GitHub users in real time with smooth animations, debounced API calls, and a polished UI.
 
-This project focuses on learning how React interacts with external APIs and how to design components that handle real-world async behavior correctly.
+👉 **Live Demo:** https://github-explorer.vercel.app  
+👉 **Tech Stack:** React · Vite · GitHub API · CSS
 
 ---
 
 ## ✨ Features
-- Fetches user data from a public API
-- Search users by ID (1–10)
-- Displays loading state while fetching data
-- Handles errors gracefully
-- Uses cleanup to avoid async issues
-- Clean and simple UI focused on logic
+
+- 🔎 **Real-time GitHub user search**
+- ⏱️ **Debounced API calls** (500ms) to prevent unnecessary requests
+- 🧠 **No duplicate fetches** for the same username
+- ❌ Graceful handling of loading & error states
+- 🎨 **Advanced UI/UX**
+  - Full-screen background
+  - Floating app card
+  - Blurred background inside the card (no glassmorphism)
+  - Smooth hover & floating animations
+- 📱 **Fully responsive** (mobile & desktop)
+- ♿ Respects `prefers-reduced-motion`
 
 ---
 
-## 🧠 Concepts Covered
-- `useState`
-- `useEffect`
-- API fetching in React
-- Loading & error states
-- Conditional rendering
-- Cleanup with `AbortController`
-- User intent vs user input
-- Debugging async issues
-- Clean Git workflow
+## 🧠 How It Works (Concepts Used)
+
+- **React Hooks**
+  - `useState` for UI state
+  - `useEffect` for side effects (API calls)
+  - `useRef` for:
+    - debouncing
+    - caching last fetched username
+- **AbortController**
+  - Cancels stale API requests during fast typing
+- **CSS Techniques**
+  - Layered backgrounds
+  - Image cloning for blur effects
+  - Floating animations
+  - Clean separation of layout and logic
+
+---
+
+## 📸 UI Preview
+
+> The app uses a full-screen background image with a floating card that blends seamlessly into the background.  
+> Only the background **inside the card** is blurred — the page background remains sharp.
+
+*(Add screenshots here if you want later)*
 
 ---
 
 ## 🛠️ Tech Stack
-- React
-- JavaScript
-- Vite
-- JSONPlaceholder API
+
+- **Frontend:** React (Vite)
+- **Styling:** Vanilla CSS (no UI libraries)
+- **API:** GitHub REST API
+- **Deployment:** Vercel
 
 ---
 
-## 🌐 API Used
-JSONPlaceholder 
-https://jsonplaceholder.typicode.com/
+## 🚀 Getting Started Locally
 
-Example endpoint:
-https://jsonplaceholder.typicode.com/users/1
-
-
----
-
-## ▶️ How to Run Locally
+### 1️⃣ Clone the repository
 
 ```bash
-npm install
-npm run dev
+git clone https://github.com/YOUR_USERNAME/github-explorer.git
+cd github-explorer
