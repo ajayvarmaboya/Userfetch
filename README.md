@@ -46,7 +46,7 @@ A modern, interactive React application to search GitHub users in real time with
 > The app uses a full-screen background image with a floating card that blends seamlessly into the background.  
 > Only the background **inside the card** is blurred — the page background remains sharp.
 
-*(Add screenshots here if you want later)*
+
 
 ---
 
