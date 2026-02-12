@@ -1,27 +1,27 @@
-
 import GithubUser from "./GithubUser";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 import "./index.css";
 
 function App() {
-  return (
-    <div className="hero">
-      <div className="app-card">
-        {/* blurred background inside card */}
-        <div className="card-bg" />
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-        {/* sharp content */}
-        <div className="card-content">
-          <GithubUser />
-        </div>
-      </div>
+  return (
+    <div className={`app ${theme}`}>
+      
+      {/* Theme Toggle Button */}
+      <button
+        className="theme-toggle"
+        onClick={toggleTheme}
+      >
+        {theme === "dark" ? "🌙" : "☀️"}
+      </button>
+
+      {/* Search UI */}
+      <GithubUser />
+
     </div>
   );
 }
 
 export default App;
-  
-
-  
-
-    
-  
