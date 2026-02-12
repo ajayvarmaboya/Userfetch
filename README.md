@@ -37,6 +37,7 @@ A minimalist React application that allows users to search GitHub profiles in re
 
 This project showcases:
 
+<<<<<<< HEAD
 - `useState`, `useEffect`, `useContext`, `useRef`
 - Context API for global state management
 - Debouncing user input
@@ -45,6 +46,16 @@ This project showcases:
 - Responsive design
 - Clean component architecture
 - Static site deployment (GitHub Pages)
+=======
+---
+
+## 📸 UI Preview
+
+> The app uses a full-screen background image with a floating card that blends seamlessly into the background.  
+> Only the background **inside the card** is blurred — the page background remains sharp.
+
+
+>>>>>>> d79fef7ec3b277c9f140bb4cba39a4d0186935a1
 
 ---
 
@@ -75,6 +86,7 @@ public/
 ### 1️⃣ Clone the repository
 
 ```bash
+<<<<<<< HEAD
 git clone https://github.com/ajayvarmaboya/GithubUserExplorer.git
 cd GithubUserExplorer
 
@@ -95,3 +107,7 @@ Make sure your vite.config.js includes:
 export default defineConfig({
   base: "/github-explorer/",
 });
+=======
+git clone https://github.com/ajayvarmaboya/Userfetch.git
+cd Userfetch
+>>>>>>> d79fef7ec3b277c9f140bb4cba39a4d0186935a1
