@@ -1,25 +1,23 @@
+import { useState } from "react";
 import GithubUser from "./GithubUser";
-import { useContext } from "react";
-import { ThemeContext } from "./ThemeContext";
 import "./index.css";
 
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [theme, setTheme] = useState("light");
+
+  function toggleTheme() {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  }
 
   return (
     <div className={`app ${theme}`}>
-      
-      {/* Theme Toggle Button */}
-      <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-      >
-        {theme === "dark" ? "🌙" : "☀️"}
+      <button className="theme-toggle" onClick={toggleTheme}>
+        {theme === "light" ? "🌙" : "☀️"}
       </button>
 
-      {/* Search UI */}
-      <GithubUser />
-
+      <div className="app-card">
+        <GithubUser />
+      </div>
     </div>
   );
 }

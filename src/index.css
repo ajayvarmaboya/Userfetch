@@ -2,10 +2,11 @@ body {
   margin: 0;
   font-family: Inter, sans-serif;
 }
- .app{
+
+.app {
   min-height: 100vh;
 
-  background-image: url("/public/GithubCat.jpeg");
+  background-image: url("/GithubCat.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,7 +14,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.3s ease;
+
+  transition: background 0.3s ease;
+}
+
+/* CARD */
+.app-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 20px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  text-align: center;
+
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* LIGHT THEME */
+.app.light .app-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+}
+
+/* DARK THEME */
+.app.dark .app-card {
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
 }
 
 /* Container */
@@ -23,10 +50,11 @@ body {
 
 /* Google-style search bar */
 .search-bar {
-  width: 90vw;
-  max-width: 500px;
-
-  padding: 14px 20px;
+  width: 90%;
+  margin: 0 auto;
+  
+  align-self: center;
+  padding: 10px ;
   font-size: 18px;
 
   border-radius: 50px;
@@ -39,23 +67,35 @@ body {
 }
 
 .search-bar:focus {
-  transform: scale(1.05);
+  transform: scale(1.03);
+}
+.app.light.search-bar{
+  caret-color: #111;
+}
+.app.dark .search-bar{
+  background: rgba(30, 30, 30, 0.9);
+  color: white;
+  caret-color: white;
 }
 
 /* Status text */
 .status {
   margin-top: 15px;
-  color: white;
+  
 }
 
-.status.error {
-  color: #ffb3b3;
+.app.light .status.error {
+  color: black; /* strong red for light bg */
+}
+
+.app.dark .status.error {
+  color: white; /* soft red for dark bg */
 }
 
 /* Result display */
 .result {
   margin-top: 25px;
-  color: white;
+  
 }
 
 .result img {
@@ -64,7 +104,7 @@ body {
 }
 .profile-link {
   text-decoration: none;
-  color: white;
+  color:inherit;
   display: inline-block;
   transition: 0.2s ease;
 }
